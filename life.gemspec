@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.1.0'
 
   s.add_dependency 'thor', '~> 1.2'
+  s.add_dependency 'tty-box', '~> 0.7'
 
   s.add_development_dependency 'rspec', '~> 3.10.0'
   s.add_development_dependency 'rubocop', '~> 1.23'
