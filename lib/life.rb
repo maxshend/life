@@ -3,10 +3,4 @@
 require 'life/cli'
 require 'life/version'
 
-module Life
-  class << self
-    def output
-      @output ||= $stdout
-    end
-  end
-end
+module Life; end

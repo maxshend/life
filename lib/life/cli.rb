@@ -5,12 +5,9 @@ require 'tty-box'
 
 module Life
   class CLI < Thor
-    GRID_HEIGHT = 10
-    GRID_WIDTH = 20
-
     desc 'version', 'Show current version'
     def version
-      Life.output.puts "v#{Life::VERSION}"
+      puts "v#{Life::VERSION}"
     end
     map %w[--version -v] => :version
 
@@ -20,7 +17,7 @@ module Life
 
       loop do
         clear_screen
-        Life.output.puts i
+        puts i
         sleep 1
         i += 1
       end
@@ -30,7 +27,7 @@ module Life
     private
 
     def clear_screen
-      Life.output.puts "\e[H\e[2J"
+      puts "\e[H\e[2J"
     end
   end
 end
