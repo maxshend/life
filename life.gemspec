@@ -20,12 +20,11 @@ Gem::Specification.new do |s|
     'Gemfile',
     'lib/**/*.rb',
     'lib/**/*.rake',
+    'bin/**/*',
     'life.gemspec'
   ]
-
-  s.metadata = {
-    'rubygems_mfa_required' => 'true'
-  }
+  s.test_files = Dir['spec/**/*.rb']
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
   s.rdoc_options     = ['--charset=UTF-8']
   s.extra_rdoc_files = %w[README.md LICENSE]
@@ -42,4 +41,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop-rspec', '~> 2.6'
   s.add_development_dependency 'simplecov', '~> 0.21.2'
   s.add_development_dependency 'simplecov-cobertura', '~> 2.0.0'
+
+  s.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end

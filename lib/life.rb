@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'life/cli'
-require_relative 'life/version'
+require 'life/cli'
+require 'life/version'
 
 module Life
   class << self

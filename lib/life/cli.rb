@@ -14,13 +14,23 @@ module Life
     end
     map %w[--version -v] => :version
 
-    desc 'grid', 'Display grid'
-    def grid
-      data = Array.new(GRID_HEIGHT, "#{'*' * GRID_WIDTH}\n").join
-      box = TTY::Box.frame data
+    desc 'start', 'Start Game of Life'
+    def start
+      i = 0
 
-      Life.output.puts box.to_s
+      loop do
+        clear_screen
+        Life.output.puts i
+        sleep 1
+        i += 1
+      end
     end
-    default_task :grid
+    default_task :start
+
+    private
+
+    def clear_screen
+      Life.output.puts "\e[H\e[2J"
+    end
   end
 end
