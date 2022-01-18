@@ -22,3 +22,6 @@ Metrics/ParameterLists:
 
 Style/Documentation:
   Enabled: false
+
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r

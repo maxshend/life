@@ -14,10 +14,12 @@ module Life
     desc 'start', 'Start Game of Life'
     def start
       i = 0
+      grid = Grid.new
 
       loop do
         clear_screen
         puts i
+        puts grid
         sleep 1
         i += 1
       end
@@ -27,7 +29,7 @@ module Life
     private
 
     def clear_screen
-      puts "\e[H\e[2J"
+      print "\e[H\e[2J"
     end
   end
 end
