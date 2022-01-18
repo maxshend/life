@@ -18,10 +18,11 @@ module Life
 
       loop do
         clear_screen
-        puts i
+        puts "Generation ##{i}"
         puts grid
         sleep 1
         i += 1
+        grid.next_generation!
       end
     end
     default_task :start
