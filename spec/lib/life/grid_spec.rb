@@ -31,7 +31,7 @@ RSpec.describe Life::Grid do
   describe '#next_generation!' do
     let(:grid) { described_class.new(state:) }
 
-    context "when initial state is 'blinker'" do
+    context "when initial state is a 'blinker'" do
       let(:state) do
         [
           [false, true, false],
@@ -53,7 +53,7 @@ RSpec.describe Life::Grid do
       end
     end
 
-    context "when initial state is 'block'" do
+    context "when initial state is a 'block'" do
       let(:state) do
         [
           [true, true, false],
@@ -67,7 +67,7 @@ RSpec.describe Life::Grid do
       end
     end
 
-    context "when initial state is 'point'" do
+    context "when initial state is a 'point'" do
       let(:state) do
         [
           [false, false, false],
@@ -86,6 +86,20 @@ RSpec.describe Life::Grid do
 
       it 'changes state to the next generation' do
         expect { grid.next_generation! }.to change(grid, :state).from(state).to next_generation
+      end
+    end
+
+    context "when initial state is a 'tub'" do
+      let(:state) do
+        [
+          [false, true, false],
+          [true, false, true],
+          [false, true, false]
+        ]
+      end
+
+      it 'does not change state' do
+        expect { grid.next_generation! }.not_to change(grid, :state).from(state)
       end
     end
   end

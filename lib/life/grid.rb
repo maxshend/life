@@ -49,14 +49,20 @@ module Life
       return nil unless in_range?(x, y)
 
       count = 0
-      count += 1 if x.positive? && y.positive? && @state[x - 1][y - 1]
-      count += 1 if y.positive? && @state[x][y - 1]
-      count += 1 if x < width - 1 && y.positive? && @state[x + 1][y - 1]
-      count += 1 if x < width - 1 && @state[x + 1][y]
-      count += 1 if x < width - 1 && y < height - 1 && @state[x + 1][y + 1]
+      if x.positive?
+        count += 1 if y.positive? && @state[x - 1][y - 1]
+        count += 1 if y < height - 1 && @state[x - 1][y + 1]
+        count += 1 if @state[x - 1][y]
+      end
+      if y.positive?
+        count += 1 if @state[x][y - 1]
+        count += 1 if x < width - 1 && @state[x + 1][y - 1]
+      end
+      if x < width - 1
+        count += 1 if @state[x + 1][y]
+        count += 1 if y < height - 1 && @state[x + 1][y + 1]
+      end
       count += 1 if y < height - 1 && @state[x][y + 1]
-      count += 1 if x.positive? && y < height - 1 && @state[x - 1][y + 1]
-      count += 1 if x.positive? && @state[x - 1][y]
 
       count
     end
@@ -64,7 +70,7 @@ module Life
     def alive?(x, y)
       neighbors = neighbors_count(x, y)
 
-      (@state[x][y] && [2, 3].include?(neighbors)) || (!@state[x][y] && neighbors == 3)
+      neighbors == 3 || (@state[x][y] && neighbors == 2)
     end
 
     def in_range?(x, y)
