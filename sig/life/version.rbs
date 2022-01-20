@@ -1,0 +1,3 @@
+module Life
+  VERSION: String
+end

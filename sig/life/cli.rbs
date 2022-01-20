@@ -1,0 +1,15 @@
+module Life
+  class CLI
+    def version: () -> void
+    def start: () -> void
+
+    # Thor methods
+    def self.desc: (String, String, ?String) -> void
+    def self.default_task: (Symbol) -> void
+    def self.map: (Hash[String | Array[String], Symbol]) -> void
+
+    private
+
+    def clear_screen: () -> void
+  end
+end

@@ -1,0 +1,17 @@
+module Life
+  class Grid
+    attr_reader width: Integer
+    attr_reader height: Integer
+    attr_reader state: Array[Array[bool]]
+
+    def initialize: (?width: Integer, ?height: Integer, ?state: Array[Array[bool]]?) -> void
+    def next_generation!: () -> void
+
+    def to_s: () -> String
+
+    private
+
+    def neighbors_count: (Integer x, Integer y) -> Integer
+    def alive?: (Integer x, Integer y) -> bool
+  end
+end

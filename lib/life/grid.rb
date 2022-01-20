@@ -46,8 +46,6 @@ module Life
     private
 
     def neighbors_count(x, y)
-      return nil unless in_range?(x, y)
-
       count = 0
       if x.positive?
         count += 1 if y.positive? && @state[x - 1][y - 1]
@@ -71,10 +69,6 @@ module Life
       neighbors = neighbors_count(x, y)
 
       neighbors == 3 || (@state[x][y] && neighbors == 2)
-    end
-
-    def in_range?(x, y)
-      (x >= 0 && x < width) && (y >= 0 && y < height)
     end
   end
 end
