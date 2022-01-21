@@ -7,6 +7,8 @@ module Life
     def self.desc: (String, String, ?String) -> void
     def self.default_task: (Symbol) -> void
     def self.map: (Hash[String | Array[String], Symbol]) -> void
+    def self.option: (Symbol, Hash[Symbol, untyped]) -> void
+    def options: () -> Hash[Symbol | String, untyped]
 
     private
 

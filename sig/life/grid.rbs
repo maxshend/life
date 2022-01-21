@@ -1,5 +1,8 @@
 module Life
   class Grid
+    DEFAULT_WIDTH: Integer
+    DEFAULT_HEIGHT: Integer
+
     attr_reader width: Integer
     attr_reader height: Integer
     attr_reader state: Array[Array[bool]]

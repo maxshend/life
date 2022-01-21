@@ -11,10 +11,15 @@ module Life
     end
     map %w[--version -v] => :version
 
+    option :width, default: nil, type: :numeric, aliases: %w[w], banner: 'Grid width'
+    option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
     desc 'start', 'Start Game of Life'
     def start
       i = 0
-      grid = Grid.new
+      grid = Grid.new(
+        width: options[:width] || Grid::DEFAULT_WIDTH,
+        height: options[:height] || Grid::DEFAULT_HEIGHT
+      )
 
       loop do
         clear_screen

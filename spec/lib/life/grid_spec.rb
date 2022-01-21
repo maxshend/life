@@ -71,14 +71,12 @@ RSpec.describe Life::Grid do
       let(:state) do
         [
           [false, false, false],
-          [false, true, false],
-          [false, false, false]
+          [false, true, false]
         ]
       end
 
       let(:next_generation) do
         [
-          [false, false, false],
           [false, false, false],
           [false, false, false]
         ]
