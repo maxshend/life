@@ -10,6 +10,8 @@ module Life
     attr_reader :width, :height, :state
 
     def initialize(width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT, state: nil)
+      raise ArgumentError, 'Grid width and height should be positive' unless width.positive? && height.positive?
+
       if state
         @width = state[0].size
         @height = state.size

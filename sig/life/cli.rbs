@@ -13,5 +13,6 @@ module Life
     private
 
     def clear_screen: () -> void
+    def check_start_options: (Hash[Symbol | String, untyped]) -> void
   end
 end
