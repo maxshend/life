@@ -9,7 +9,6 @@ module Life
 
     def initialize: (?width: Integer, ?height: Integer, ?state: Array[Array[bool]]?) -> void
     def next_generation!: () -> void
-
     def to_s: () -> String
 
     private

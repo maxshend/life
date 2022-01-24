@@ -3,5 +3,6 @@
 require 'life/cli'
 require 'life/version'
 require 'life/grid'
+require 'life/grid/csv_converter'
 
 module Life; end

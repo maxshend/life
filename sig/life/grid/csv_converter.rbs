@@ -1,0 +1,8 @@
+module Life
+  class Grid
+    class CSVConverter
+      def initialize: (String) -> void
+      def convert: () -> Array[Array[bool]]
+    end
+  end
+end
