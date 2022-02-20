@@ -9,7 +9,16 @@ module Life
 
     attr_reader :width, :height, :state
 
-    def initialize(width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT, state: nil)
+    def initialize(width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT, state: nil, filename: nil)
+      if filename
+        converter = CSVConverter.new(filename)
+        @state = converter.convert
+        @width = @state[0].size
+        @height = @state.size
+
+        return
+      end
+
       raise ArgumentError, 'Grid width and height should be positive' unless width.positive? && height.positive?
 
       if state

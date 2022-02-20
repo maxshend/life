@@ -7,7 +7,7 @@ module Life
     attr_reader height: Integer
     attr_reader state: Array[Array[bool]]
 
-    def initialize: (?width: Integer, ?height: Integer, ?state: Array[Array[bool]]?) -> void
+    def initialize: (?width: Integer, ?height: Integer, ?state: Array[Array[bool]]?, ?filename: String) -> void
     def next_generation!: () -> void
     def to_s: () -> String
 

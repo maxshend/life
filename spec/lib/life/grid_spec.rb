@@ -26,6 +26,26 @@ RSpec.describe Life::Grid do
         expect(grid.to_s).to match %r{\A([\s*]{#{width * 2}}\n){#{height}}\z}
       end
     end
+
+    describe 'with initial state from a file' do
+      let(:csv) do
+        f = Tempfile.new('csv')
+        f.write(<<~CSV)
+          1,
+          1,1
+        CSV
+        f.rewind
+
+        f
+      end
+      let(:grid) { described_class.new(filename: csv.path) }
+
+      after { csv.unlink }
+
+      it 'has valid grid representation' do
+        expect(grid.to_s).to eq " *  \n * *\n"
+      end
+    end
   end
 
   describe '#next_generation!' do

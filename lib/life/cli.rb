@@ -13,6 +13,7 @@ module Life
 
     option :width, default: nil, type: :numeric, aliases: %w[w], banner: 'Grid width'
     option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
+    option :filename, default: nil, type: :string, aliases: %w[f], banner: 'CSV file name'
     desc 'start', 'Start Game of Life'
     def start
       check_start_options options
@@ -20,7 +21,8 @@ module Life
       i = 0
       grid = Grid.new(
         width: options[:width] || Grid::DEFAULT_WIDTH,
-        height: options[:height] || Grid::DEFAULT_HEIGHT
+        height: options[:height] || Grid::DEFAULT_HEIGHT,
+        filename: options[:filename]
       )
 
       loop do
