@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.1.0'
 
   s.add_dependency 'activesupport', '~> 6' # Temporary fix https://github.com/soutaro/steep/issues/466
+  s.add_dependency 'rmagick', '~> 4.2.4'
   s.add_dependency 'steep', '~> 0.47'
   s.add_dependency 'thor', '~> 1.2'
   s.add_dependency 'tty-box', '~> 0.7'

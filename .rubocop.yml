@@ -37,3 +37,9 @@ Style/RegexpLiteral:
 
 Naming/MethodParameterName:
   Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
