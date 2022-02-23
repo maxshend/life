@@ -14,6 +14,7 @@ module Life
     option :width, default: nil, type: :numeric, aliases: %w[w], banner: 'Grid width'
     option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
     option :filename, default: nil, type: :string, aliases: %w[f], banner: 'CSV file name'
+    option :output, default: nil, type: :boolean, aliases: %w[o], banner: 'Output to a file'
     desc 'start', 'Start Game of Life'
     def start
       check_start_options options
@@ -24,6 +25,13 @@ module Life
         height: options[:height] || Grid::DEFAULT_HEIGHT,
         filename: options[:filename]
       )
+
+      if options[:output]
+        gif = Life::Grid::GIFGenerator.new(grid:, iterations: 20).generate
+        gif.write 'life.gif'
+
+        return
+      end
 
       loop do
         clear_screen

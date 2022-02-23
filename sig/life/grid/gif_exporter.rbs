@@ -1,7 +1,0 @@
-module Life
-  class Grid
-    class GIFExporter
-      def initialize: (Grid) -> void
-    end
-  end
-end

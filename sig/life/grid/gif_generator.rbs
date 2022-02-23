@@ -1,0 +1,17 @@
+module Life
+  class Grid
+    class GIFGenerator
+      DEFAULT_WIDTH: Integer
+      DEFAULT_HEIGHT: Integer
+      MAX_ITERATIONS: Integer
+      ANIMATION_DELAY: Integer
+
+      def initialize: (grid: Grid, ?iterations: Integer) -> void
+      def generate: () -> untyped
+
+      private
+
+      def new_image: () -> untyped
+    end
+  end
+end

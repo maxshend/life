@@ -4,15 +4,19 @@ require 'rmagick'
 
 module Life
   class Grid
-    class GIFExporter
+    class GIFGenerator
       include Magick
 
       DEFAULT_WIDTH = 800
       DEFAULT_HEIGHT = 600
+      MAX_ITERATIONS = 20
+      ANIMATION_DELAY = 40
 
-      def initialize(grid)
+      def initialize(grid:, iterations: 1)
         raise ArgumentError, 'Invalid Grid object' unless grid.is_a? Life::Grid
 
+        @iterations = iterations > MAX_ITERATIONS ? MAX_ITERATIONS : iterations
+        @grid = grid
         @data = grid.state
 
         return unless @data.size.zero? || @data[0].size.zero?
@@ -20,8 +24,27 @@ module Life
         raise ArgumentError, 'Grid should has positive number of rows and columns'
       end
 
-      def export
+      def generate
+        result = ImageList.new
+
+        @iterations.times do |i|
+          result << new_image
+
+          unless i == @iterations - 1
+            @grid.next_generation!
+            @data = @grid.state
+          end
+        end
+
+        result
+      end
+
+      private
+
+      def new_image
         img = Image.new DEFAULT_WIDTH, DEFAULT_HEIGHT, SolidFill.new('white')
+        img.delay = ANIMATION_DELAY
+
         cell_w = img.columns.to_f / @data[0].size
         cell_h = img.rows.to_f / @data.size
 
