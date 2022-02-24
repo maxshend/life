@@ -7,13 +7,14 @@ module Life
     class GIFGenerator
       include Magick
 
-      DEFAULT_WIDTH = 800
+      DEFAULT_WIDTH = 600
       DEFAULT_HEIGHT = 600
-      MAX_ITERATIONS = 20
+      MAX_ITERATIONS = 50
       ANIMATION_DELAY = 40
 
       def initialize(grid:, iterations: 1)
         raise ArgumentError, 'Invalid Grid object' unless grid.is_a? Life::Grid
+        raise ArgumentError, 'Number of iterations should be positive' unless iterations.positive?
 
         @iterations = iterations > MAX_ITERATIONS ? MAX_ITERATIONS : iterations
         @grid = grid

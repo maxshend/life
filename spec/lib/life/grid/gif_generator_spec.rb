@@ -26,6 +26,14 @@ RSpec.describe Life::Grid::GIFGenerator do
           expect { described_class.new(grid:) }.to raise_error ArgumentError
         end
       end
+
+      describe 'when iterations number is invalid' do
+        let(:grid) { Life::Grid.new }
+
+        it 'raises ArgumentError' do
+          expect { described_class.new(grid:, iterations: 0) }.to raise_error ArgumentError
+        end
+      end
     end
   end
 
