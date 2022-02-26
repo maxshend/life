@@ -1,5 +1,7 @@
 module Life
   class CLI
+    OUTPUT_FILE: String
+
     def version: () -> void
     def start: () -> void
 

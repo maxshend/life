@@ -5,6 +5,8 @@ require 'tty-box'
 
 module Life
   class CLI < Thor
+    OUTPUT_FILE = 'life.gif'
+
     desc 'version', 'Show current version'
     def version
       puts "v#{Life::VERSION}"
@@ -13,7 +15,7 @@ module Life
 
     option :width, default: nil, type: :numeric, aliases: %w[w], banner: 'Grid width'
     option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
-    option :filename, default: nil, type: :string, aliases: %w[f], banner: 'CSV file name'
+    option :input, default: nil, type: :string, aliases: %w[i], banner: 'CSV input file name'
     option :output, default: nil, type: :boolean, aliases: %w[o], banner: 'Output to a file'
     option :iterations, default: 20, type: :numeric, aliases: %w[i], banner: 'Number of iterations'
     desc 'start', 'Start Game of Life'
@@ -24,7 +26,7 @@ module Life
       grid = Grid.new(
         width: options[:width] || Grid::DEFAULT_WIDTH,
         height: options[:height] || Grid::DEFAULT_HEIGHT,
-        filename: options[:filename]
+        filename: options[:input]
       )
 
       if options[:output]
@@ -32,7 +34,7 @@ module Life
         # rubocop:disable Style/HashSyntax
         gif = Life::Grid::GIFGenerator.new(grid: grid, iterations: options[:iterations]).generate
         # rubocop:enable Style/HashSyntax
-        gif.write 'life.gif'
+        gif.write OUTPUT_FILE
 
         return
       end
