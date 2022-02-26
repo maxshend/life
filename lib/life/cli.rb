@@ -17,7 +17,7 @@ module Life
     option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
     option :input, default: nil, type: :string, aliases: %w[i], banner: 'CSV input file name'
     option :output, default: nil, type: :boolean, aliases: %w[o], banner: 'Output to a file'
-    option :iterations, default: 20, type: :numeric, aliases: %w[i], banner: 'Number of iterations'
+    option :iterations, default: 20, type: :numeric, aliases: %w[n], banner: 'Number of iterations'
     desc 'start', 'Start Game of Life'
     def start
       check_start_options options
