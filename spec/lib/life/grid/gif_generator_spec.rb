@@ -14,13 +14,13 @@ RSpec.describe Life::Grid::GIFGenerator do
 
     describe 'with invalid grid' do
       describe 'when grid object is invalid' do
-        it 'raises ArgumentError' do
-          expect { described_class.new(grid: Object.new) }.to raise_error ArgumentError
+        it 'raises TypeError' do
+          expect { described_class.new(grid: Object.new) }.to raise_error TypeError
         end
       end
 
-      describe 'when grid is empty' do
-        let(:grid) { Life::Grid.new width: 0, height: 1 }
+      describe 'when grid has invalid width' do
+        let(:grid) { Life::Grid.new width: -1, height: 1 }
 
         it 'raises ArgumentError' do
           expect { described_class.new(grid:) }.to raise_error ArgumentError

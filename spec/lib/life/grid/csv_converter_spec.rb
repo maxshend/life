@@ -16,7 +16,7 @@ RSpec.describe Life::Grid::CSVConverter do
       end
     end
 
-    context 'when file is valid' do
+    context 'when file exists' do
       let(:csv) { Tempfile.new('csv') }
 
       after { csv.unlink }

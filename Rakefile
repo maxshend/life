@@ -12,12 +12,20 @@ RuboCop::RakeTask.new do |task|
   task.requires << 'rubocop-rake'
 end
 
-desc 'check for type errors'
-task :steep do
+namespace :steep do
   require 'steep'
   require 'steep/cli'
 
-  Steep::CLI.new(argv: ['check'], stdout: $stdout, stderr: $stderr, stdin: $stdin).run
+  desc 'check for type errors'
+  task :check do
+    Steep::CLI.new(argv: ['check'], stdout: $stdout, stderr: $stderr, stdin: $stdin).run
+  end
+
+  desc 'runtime type testing'
+  task :run do
+    system "SKIP_COV=true RBS_TEST_TARGET='Life::*' RUBYOPT='-rrbs/test/setup' bundle exec rspec spec"
+  end
 end
 
-task default: %w[steep rubocop spec]
+task default: %w[rubocop spec]
+task steep: %w[steep:check steep:run]

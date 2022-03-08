@@ -13,16 +13,12 @@ module Life
       ANIMATION_DELAY = 40
 
       def initialize(grid:, iterations: 1)
-        raise ArgumentError, 'Invalid Grid object' unless grid.is_a? Life::Grid
+        raise TypeError, "Expected Grid, got #{grid.class.name}" unless grid.is_a? Life::Grid
         raise ArgumentError, 'Number of iterations should be positive' unless iterations.positive?
 
         @iterations = iterations > MAX_ITERATIONS ? MAX_ITERATIONS : iterations
         @grid = grid
         @data = grid.state
-
-        return unless @data.size.zero? || @data[0].size.zero?
-
-        raise ArgumentError, 'Grid should has positive number of rows and columns'
       end
 
       def generate
