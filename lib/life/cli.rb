@@ -16,8 +16,8 @@ module Life
     option :width, default: nil, type: :numeric, aliases: %w[w], banner: 'Grid width'
     option :height, default: nil, type: :numeric, aliases: %w[h], banner: 'Grid height'
     option :input, default: nil, type: :string, aliases: %w[i], banner: 'CSV input file name'
-    option :output, default: nil, type: :boolean, aliases: %w[o], banner: 'Output to a file'
-    option :iterations, default: 20, type: :numeric, aliases: %w[n], banner: 'Number of iterations'
+    option :export, default: nil, type: :boolean, aliases: %w[e], banner: 'Export to a file'
+    option :iterations, default: 20, type: :numeric, aliases: %w[n], banner: 'Number of iterations in the output file'
     desc 'start', 'Start Game of Life'
     def start
       check_start_options options
@@ -29,7 +29,7 @@ module Life
         filename: options[:input]
       )
 
-      if options[:output]
+      if options[:export]
         # Until https://github.com/soutaro/steep/issues/481 fixed
         # rubocop:disable Style/HashSyntax
         gif = Life::Grid::GIFGenerator.new(grid: grid, iterations: options[:iterations]).generate
